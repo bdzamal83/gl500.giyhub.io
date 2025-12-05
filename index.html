@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comfort Эконом — Оптовый каталог</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d021a;
+      --panel: #1b0b33;
+      --panel-strong: #231140;
+      --text: #f6f4ff;
+      --muted: #c9c3e5;
+      --accent: #a06bff;
+      --accent-strong: #c79bff;
+      --success: #7dd3fc;
+      --shadow: 0 15px 40px rgba(0,0,0,0.35);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 10% 20%, rgba(88,64,140,0.18), transparent 30%),
+                  radial-gradient(circle at 80% 0%, rgba(160,107,255,0.16), transparent 25%),
+                  radial-gradient(circle at 50% 80%, rgba(125,211,252,0.12), transparent 30%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; border-radius: 14px; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+      background: rgba(13,2,26,0.8);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    .logo-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--success));
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: #0d021a;
+      box-shadow: var(--shadow);
+    }
+
+    nav a {
+      color: var(--muted);
+      font-weight: 500;
+      padding: 10px 14px;
+      border-radius: 12px;
+      transition: color .2s ease, background .2s ease, transform .2s ease;
+    }
+
+    nav a:hover {
+      color: var(--text);
+      background: rgba(160,107,255,0.1);
+      transform: translateY(-1px);
+    }
+
+    .cta {
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #0d021a;
+      font-weight: 700;
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .cta:hover { transform: translateY(-2px); box-shadow: 0 18px 44px rgba(160,107,255,0.35);} 
+
+    main { max-width: 1200px; margin: 0 auto; padding: 40px 20px 80px; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+      align-items: center;
+      padding: 42px;
+      background: linear-gradient(145deg, rgba(160,107,255,0.12), rgba(27,11,51,0.9));
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.06);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(125,211,252,0.1);
+      color: var(--success);
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .hero h1 { margin: 16px 0 12px; font-size: 36px; line-height: 1.2; }
+    .hero p { margin: 0 0 18px; color: var(--muted); font-size: 17px; }
+
+    .hero-visual {
+      position: relative;
+      padding: 12px;
+    }
+
+    .hero-card {
+      background: rgba(35,17,64,0.85);
+      border-radius: 22px;
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(140px, 1fr));
+      gap: 12px;
+    }
+
+    .hero-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 12px;
+      border-radius: 16px;
+    }
+
+    h2.section-title {
+      margin: 60px 0 18px;
+      font-size: 28px;
+      letter-spacing: 0.3px;
+    }
+
+    .pill-label {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      color: var(--muted);
+      font-size: 14px;
+      letter-spacing: 0.4px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .card:hover { transform: translateY(-4px); border-color: rgba(160,107,255,0.4); }
+
+    .chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; background: rgba(160,107,255,0.12); color: var(--accent-strong); border-radius: 12px; font-weight: 600; font-size: 13px; }
+    .chip.small { padding: 4px 8px; font-size: 12px; }
+
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+
+    .product-card img { height: 180px; object-fit: cover; margin-bottom: 12px; }
+    .product-meta { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 14px; }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+
+    .actions { display: flex; gap: 12px; margin-top: 14px; }
+    .ghost { background: transparent; color: var(--muted); border: 1px solid rgba(255,255,255,0.2); padding: 10px 14px; border-radius: 12px; cursor: pointer; transition: background .2s ease, border-color .2s ease; }
+    .ghost:hover { background: rgba(255,255,255,0.06); border-color: rgba(160,107,255,0.5); color: var(--text); }
+
+    .admin-panel {
+      margin-top: 40px;
+      background: var(--panel-strong);
+      padding: 24px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    form { display: grid; gap: 12px; margin-top: 12px; }
+    label { font-weight: 600; color: var(--text); }
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    textarea { resize: vertical; min-height: 80px; }
+
+    .admin-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    .table th, .table td {
+      padding: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+      text-align: left;
+    }
+    .table th { color: var(--text); font-weight: 700; }
+
+    footer { text-align: center; padding: 30px 0 10px; color: var(--muted); font-size: 14px; }
+
+    .reveal { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 720px) {
+      .nav { flex-direction: column; align-items: flex-start; }
+      .hero { padding: 28px; }
+      .hero h1 { font-size: 28px; }
+      .actions { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo">
+        <div class="logo-mark">C</div>
+        <div>
+          Comfort Эконом<br>
+          <span style="color: var(--muted); font-weight: 500; font-size: 14px;">Оптовые поставки по Кавказу</span>
+        </div>
+      </div>
+      <nav aria-label="Основная навигация">
+        <a href="#catalog">Каталог</a>
+        <a href="#advantages">Преимущества</a>
+        <a href="#admin">Админ-панель</a>
+      </nav>
+      <button class="cta" onclick="scrollToForm()">Узнать цену</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero reveal">
+      <div>
+        <div class="badge">Каталог для оптовых закупок</div>
+        <h1>Гигиеническая продукция Comfort Эконом — надежно, выгодно, вовремя.</h1>
+        <p>Влажные и вискозные салфетки, туалетная бумага, бумажные полотенца и комплексные решения для поставок по всему Кавказу. Без цен на сайте: оформляйте запросы под ваш объем.</p>
+        <div class="actions">
+          <button class="cta" onclick="scrollToForm()">Узнать цену</button>
+          <button class="ghost" onclick="document.getElementById('catalog').scrollIntoView({behavior:'smooth'})">Смотреть каталог</button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-grid">
+            <div class="hero-item">
+              <div class="chip small">Салфетки</div>
+              <h3 style="margin: 8px 0 4px;">Влажные</h3>
+              <p style="margin:0; color: var(--muted);">Мягкие, прочные, безопасные для кожи.</p>
+            </div>
+            <div class="hero-item">
+              <div class="chip small">Поставки</div>
+              <h3 style="margin: 8px 0 4px;">Логистика 48ч</h3>
+              <p style="margin:0; color: var(--muted);">По ключевым городам Кавказа.</p>
+            </div>
+            <div class="hero-item">
+              <div class="chip small">Бумага</div>
+              <h3 style="margin: 8px 0 4px;">2 и 3 слоя</h3>
+              <p style="margin:0; color: var(--muted);">Целлюлоза и вискоза премиум.</p>
+            </div>
+            <div class="hero-item">
+              <div class="chip small">Контроль</div>
+              <h3 style="margin: 8px 0 4px;">ISO &amp; HACCP</h3>
+              <p style="margin:0; color: var(--muted);">Стандарты качества подтверждены.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="advantages" class="reveal">
+      <div class="pill-label">Почему Comfort Эконом</div>
+      <h2 class="section-title">Продукция, логистика и сервис под оптовые запросы</h2>
+      <div class="features">
+        <div class="card">
+          <div class="chip">Ассортимент</div>
+          <p style="margin: 10px 0 0; color: var(--muted);">Готовые SKU и производство под вашу марку: влажные и вискозные салфетки, бумага, полотенца.</p>
+        </div>
+        <div class="card">
+          <div class="chip">Стабильность</div>
+          <p style="margin: 10px 0 0; color: var(--muted);">Сырье от проверенных поставщиков, прозрачные спецификации, гибкие партии.</p>
+        </div>
+        <div class="card">
+          <div class="chip">Логистика</div>
+          <p style="margin: 10px 0 0; color: var(--muted);">Доставляем по всему Кавказу, помогаем с сертификацией и сопроводительными документами.</p>
+        </div>
+        <div class="card">
+          <div class="chip">Поддержка</div>
+          <p style="margin: 10px 0 0; color: var(--muted);">Персональный менеджер и быстрые ответы на запрос стоимости и наличие.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalog" class="reveal">
+      <div class="pill-label">Категории</div>
+      <h2 class="section-title">Каталог продукции</h2>
+      <div id="categoryGrid" class="grid"></div>
+      <div style="margin-top: 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+        <div style="color: var(--muted);">Выберите категорию, чтобы увидеть товары.</div>
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <label for="filter" style="font-weight:600;">Фильтр:</label>
+          <select id="filter" onchange="renderProducts()"></select>
+        </div>
+      </div>
+      <div id="productGrid" class="grid" style="margin-top: 18px;"></div>
+    </section>
+
+    <section class="reveal" id="admin">
+      <div class="pill-label">Админ-панель</div>
+      <h2 class="section-title">Добавляйте категории и товары без кода</h2>
+      <div class="admin-panel">
+        <div class="admin-columns">
+          <div>
+            <h3>Категории</h3>
+            <form id="categoryForm">
+              <div>
+                <label for="categoryName">Название категории</label>
+                <input id="categoryName" name="name" placeholder="Например: Влажные салфетки" required>
+              </div>
+              <div>
+                <label for="categoryDescription">Описание</label>
+                <textarea id="categoryDescription" name="description" placeholder="Кратко опишите категорию" required></textarea>
+              </div>
+              <button type="submit" class="cta" style="width:fit-content;">Добавить категорию</button>
+            </form>
+            <table class="table" aria-label="Список категорий">
+              <thead><tr><th>Категория</th><th>Описание</th><th>Товаров</th></tr></thead>
+              <tbody id="categoryTable"></tbody>
+            </table>
+          </div>
+          <div>
+            <h3>Товары</h3>
+            <form id="productForm">
+              <div>
+                <label for="productName">Название товара</label>
+                <input id="productName" name="name" placeholder="Например: Салфетки 120 листов" required>
+              </div>
+              <div>
+                <label for="productCategory">Категория</label>
+                <select id="productCategory" name="category" required></select>
+              </div>
+              <div>
+                <label for="productFeatures">Ключевые характеристики</label>
+                <input id="productFeatures" name="features" placeholder="Например: 100% целлюлоза, 3 слоя">
+              </div>
+              <div>
+                <label for="productDescription">Описание</label>
+                <textarea id="productDescription" name="description" placeholder="Краткое описание товара" required></textarea>
+              </div>
+              <div>
+                <label for="productImage">Ссылка на фото</label>
+                <input id="productImage" name="image" placeholder="https://...">
+              </div>
+              <button type="submit" class="cta" style="width:fit-content;">Добавить товар</button>
+            </form>
+            <table class="table" aria-label="Список товаров">
+              <thead><tr><th>Товар</th><th>Категория</th><th>Ключевые характеристики</th></tr></thead>
+              <tbody id="productTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Comfort Эконом — оптовые поставки гигиенической продукции по Кавказу. Нажмите «Узнать цену» и мы подготовим предложение под ваш объем.
+  </footer>
+
+  <script>
+    const categories = [
+      { id: 'wipes', name: 'Влажные салфетки', description: 'Удобные форматы для дома, офисов и HoReCa. Барьерные крышки, безопасные составы.' },
+      { id: 'viscose', name: 'Вискозные салфетки', description: 'Повышенная впитываемость и прочность — для уборки и клининга.' },
+      { id: 'toilet', name: 'Туалетная бумага', description: '2 и 3 слоя, плотная намотка, мягкая целлюлоза и вискоза.' },
+      { id: 'towels', name: 'Бумажные полотенца', description: 'Рулонные и листовые форматы для кухни, баров и производств.' }
+    ];
+
+    const products = [
+      { id: 'w1', name: 'Влажные салфетки 120 шт', category: 'wipes', description: 'Формат с крышкой, гипоаллергенная пропитка, плотное нетканое полотно.', features: ['Прочная салфетка', 'Без спирта', 'Удобная защёлка'], image: 'https://images.unsplash.com/photo-1582719478191-7f6c7d2b0478?auto=format&fit=crop&w=900&q=80' },
+      { id: 'w2', name: 'Pocket салфетки 15 шт', category: 'wipes', description: 'Компактный формат для ритейла и тревел-наборов.', features: ['Индивидуальная плёнка', 'Лёгкая ароматизация', 'Маркировка по ТР ТС'], image: 'https://images.unsplash.com/photo-1582719434395-99178344054f?auto=format&fit=crop&w=900&q=80' },
+      { id: 'v1', name: 'Вискозные салфетки 3 шт', category: 'viscose', description: 'Повторное использование до 20 циклов, отлично впитывают жир и влагу.', features: ['Усиленная фактура', 'Цветовые варианты', 'Размер 30×35'], image: 'https://images.unsplash.com/photo-1523419400524-c2f76e91b0db?auto=format&fit=crop&w=900&q=80' },
+      { id: 't1', name: 'Туалетная бумага 2 слоя', category: 'toilet', description: 'Мягкая и плотная, ровный перфорационный шаг.', features: ['100% целлюлоза', '24 рулона в упаковке', 'Экономичный расход'], image: 'https://images.unsplash.com/photo-1584189095000-26ed92c37d10?auto=format&fit=crop&w=900&q=80' },
+      { id: 't2', name: 'Туалетная бумага 3 слоя', category: 'toilet', description: 'Премиальная текстура, насыщенный белый цвет, чистая намотка.', features: ['3 слоя', '2-пак и 4-пак', 'Опционально: индивидуальная упаковка'], image: 'https://images.unsplash.com/photo-1582719478248-48cd7100d3c4?auto=format&fit=crop&w=900&q=80' },
+      { id: 'p1', name: 'Полотенца 2 слоя Jumbo', category: 'towels', description: 'Для ресторанов и производств, повышенная длина рулона.', features: ['Перфорация без пыли', 'Влагостойкая намотка', 'Диаметр втулки под диспенсер'], image: 'https://images.unsplash.com/photo-1582719188393-bb71ca45db4a?auto=format&fit=crop&w=900&q=80' }
+    ];
+
+    const categoryGrid = document.getElementById('categoryGrid');
+    const productGrid = document.getElementById('productGrid');
+    const filterSelect = document.getElementById('filter');
+    const categorySelect = document.getElementById('productCategory');
+    const categoryTable = document.getElementById('categoryTable');
+    const productTable = document.getElementById('productTable');
+
+    function renderCategories() {
+      categoryGrid.innerHTML = categories.map(cat => `
+        <article class="card" onclick="selectCategory('${cat.id}')">
+          <div class="chip">${cat.name}</div>
+          <p style="color:var(--muted); margin:10px 0 0;">${cat.description}</p>
+        </article>
+      `).join('');
+
+      filterSelect.innerHTML = '<option value="all">Все категории</option>' + categories.map(cat => `<option value="${cat.id}">${cat.name}</option>`).join('');
+      categorySelect.innerHTML = categories.map(cat => `<option value="${cat.id}">${cat.name}</option>`).join('');
+
+      categoryTable.innerHTML = categories.map(cat => {
+        const count = products.filter(p => p.category === cat.id).length;
+        return `<tr><td>${cat.name}</td><td>${cat.description}</td><td>${count}</td></tr>`;
+      }).join('');
+    }
+
+    function renderProducts() {
+      const active = filterSelect.value || 'all';
+      const filtered = active === 'all' ? products : products.filter(p => p.category === active);
+      if (filtered.length === 0) {
+        productGrid.innerHTML = '<p style="color:var(--muted);">Пока нет товаров в этой категории. Добавьте их через админ-панель.</p>';
+        productTable.innerHTML = '';
+        return;
+      }
+
+      productGrid.innerHTML = filtered.map(prod => `
+        <article class="card product-card">
+          ${prod.image ? `<img src="${prod.image}" alt="${prod.name}">` : ''}
+          <div class="chip small">${getCategoryName(prod.category)}</div>
+          <h3 style="margin: 10px 0 6px;">${prod.name}</h3>
+          <p style="color:var(--muted); margin: 0 0 8px;">${prod.description}</p>
+          <div class="tag-row">
+            ${(prod.features || []).map(f => `<span class="chip small">${f}</span>`).join('')}
+          </div>
+          <div class="actions">
+            <button class="cta" onclick="scrollToForm()">Узнать цену</button>
+            <button class="ghost" onclick="alert('Подробности и спецификации отправим после запроса цены.')">Подробнее</button>
+          </div>
+        </article>
+      `).join('');
+
+      productTable.innerHTML = products.map(p => `<tr><td>${p.name}</td><td>${getCategoryName(p.category)}</td><td>${(p.features || []).join(', ')}</td></tr>`).join('');
+    }
+
+    function getCategoryName(id) {
+      return categories.find(c => c.id === id)?.name || 'Категория';
+    }
+
+    function selectCategory(id) {
+      filterSelect.value = id;
+      renderProducts();
+      document.getElementById('catalog').scrollIntoView({behavior:'smooth'});
+    }
+
+    document.getElementById('categoryForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = e.target.name.value.trim();
+      const description = e.target.description.value.trim();
+      if (!name || !description) return;
+      const id = name.toLowerCase().replace(/\s+/g, '-');
+      categories.push({ id, name, description });
+      e.target.reset();
+      renderCategories();
+      renderProducts();
+    });
+
+    document.getElementById('productForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = e.target.name.value.trim();
+      const category = e.target.category.value;
+      const description = e.target.description.value.trim();
+      const image = e.target.image.value.trim();
+      const features = e.target.features.value ? e.target.features.value.split(',').map(s => s.trim()).filter(Boolean) : [];
+      if (!name || !description || !category) return;
+      const id = `${category}-${Date.now()}`;
+      products.push({ id, name, category, description, image, features });
+      e.target.reset();
+      renderProducts();
+      renderCategories();
+    });
+
+    function scrollToForm() {
+      document.getElementById('admin').scrollIntoView({behavior:'smooth'});
+    }
+
+    function initRevealAnimations() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+
+    renderCategories();
+    renderProducts();
+    initRevealAnimations();
+  </script>
+</body>
+</html>
